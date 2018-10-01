@@ -2,8 +2,10 @@
 
 TURN BASED!!!
 
+Background - Dark Green
+
 Objects:
-Player
+Player - Orange/Red/Blue
 Enemy
 
 Entities:
