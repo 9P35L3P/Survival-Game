@@ -1,0 +1,12 @@
+Potion
+
+Enemy
+
+Player
+
+
+
+
+Health value ( shown )
+
+Difficulty ( hidden )
