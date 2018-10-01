@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.lang.Thread;
 
 public class SurvivalGame extends JFrame {
 
@@ -6,6 +7,13 @@ public class SurvivalGame extends JFrame {
   
     setTitle("Survival Game");
     setSize(768, 768);
+    
+    Game game = new Game();
+    Thread thread = new Thread(game, "game");
+    add(game);
+    thread.start();
+    
+    
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);
   
