@@ -1,20 +1,19 @@
 import javax.swing.*;
-import java.lang.Thread;
 
 public class SurvivalGame extends JFrame {
 
   public SurvivalGame() {
   
     setTitle("Survival Game");
-    setSize(768, 768);
+    setSize(800, 820);
     
-    Game game = new Game();
-    Thread thread = new Thread(game, "game");
-    add(game);
+    Game panel = new Game();
+    Thread thread = new Thread(panel, "game");
+    add(panel);
     thread.start();
     
-    
     setDefaultCloseOperation(EXIT_ON_CLOSE);
+    setLocationRelativeTo(null);
     setVisible(true);
   
   }
