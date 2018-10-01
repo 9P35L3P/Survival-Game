@@ -12,8 +12,19 @@ public class Game extends JPanel implements Runnable {
   @Override
   public void paint(Graphics g) {
   
-    g.setColor(new Color(30, 160, 30));
+    g.setColor(new Color(30, 130, 30));
     g.fillRect(0, 0, 768, 768);
+    
+    g.setColor(Color.DARK_GRAY);
+    for (int i = 0; i < 768; i+=32) {
+    	
+    	for (int w = 0; w < 768; w+=32) {
+    		
+    		g.drawRect(i, w, 32, 32);
+    		
+    	}
+    	
+    }
   
   }
 
@@ -24,6 +35,8 @@ public class Game extends JPanel implements Runnable {
       Thread.sleep(1000/30);
     } catch (Exception e) { 
     }
+    
+    repaint();
     
   }
   
