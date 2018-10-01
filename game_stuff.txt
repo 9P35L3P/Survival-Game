@@ -1,12 +1,10 @@
-Potion
-
+Objects:
+Player
 Enemy
 
-Player
+Entities:
+Potion
 
-
-
-
+HUD:
 Health value ( shown )
-
 Difficulty ( hidden )
