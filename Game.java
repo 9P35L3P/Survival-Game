@@ -4,7 +4,15 @@ import java.lang.Thread;
 
 public class Game extends JPanel implements Runnable {
 
-  public Game() {}
+  public static Player player;
+  public static Enemy enemy;
+
+  public Game() {
+
+    player = new Player();
+    enemy = new Enemy();
+
+  }
 
   @Override
   public void run() {}
@@ -16,6 +24,8 @@ public class Game extends JPanel implements Runnable {
     g.fillRect(0, 0, 768, 768);
 
     drawGrid(g);
+    player.draw(g);
+    enemy.draw(g);
 
     g.setColor(new Color(110, 50, 0));
     g.fillRect(0, 640, 768, 768);
