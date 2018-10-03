@@ -10,7 +10,7 @@ public class Game extends JPanel implements Runnable {
   public static Enemy enemy1;
   public static Enemy enemy2;
   
-  public static int turn = 0;
+  public static boolean playerTurn = true;
 
   public Game() {
 
@@ -71,21 +71,25 @@ class KeyListen extends KeyAdapter {
 		
 		int keycode = e.getKeyCode();
 		
-		if (Game.turn == 0) {
+		if (Game.playerTurn) {
 			
 			switch (keycode) {
 			
 				case 'D':
 					Game.player.moveRight();
+					Game.playerTurn = false;
 					break;
 				case 'A':
 					Game.player.moveLeft();
+					Game.playerTurn = false;
 					break;
 				case 'S':
 					Game.player.moveDown();
+					Game.playerTurn = false;
 					break;
 				case 'W':
 					Game.player.moveUp();
+					Game.playerTurn = false;
 					break;
 				
 			}
