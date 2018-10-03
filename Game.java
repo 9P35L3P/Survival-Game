@@ -1,15 +1,26 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.lang.Thread;
 
 public class Game extends JPanel implements Runnable {
   
   public static Player player;
+  public static Enemy enemy1;
+  public static Enemy enemy2;
+  
+  public static int turn = 0;
 
   public Game() {
 
     player = new Player();
+    enemy1 = new Enemy();
+    enemy2 = new Enemy();
+    
+    setFocusable(true);
+    
+    addKeyListener(new KeyListen());
     
   }
   
@@ -31,19 +42,55 @@ public class Game extends JPanel implements Runnable {
     }
 
     player.draw(g);
+    enemy1.draw(g);
+    enemy2.draw(g);
   
   }
 
   @Override
   public void run() {
-  
-    try {
-      Thread.sleep(1000/30);
-    } catch (Exception e) { 
-    }
-    
-    repaint();
+  	while (true) {
+  	
+	    try {
+	    	
+	      Thread.sleep(1000/30);
+	      repaint();
+	      
+	    } catch (Exception e) { 
+	    }
+  	}
     
   }
   
+}
+
+class KeyListen extends KeyAdapter {
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		
+		int keycode = e.getKeyCode();
+		
+		if (Game.turn == 0) {
+			
+			switch (keycode) {
+			
+				case 'D':
+					Game.player.moveRight();
+					break;
+				case 'A':
+					Game.player.moveLeft();
+					break;
+				case 'S':
+					Game.player.moveDown();
+					break;
+				case 'W':
+					Game.player.moveUp();
+					break;
+				
+			}
+		}
+		
+	} 
+	
 }
