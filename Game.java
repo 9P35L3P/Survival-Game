@@ -5,7 +5,11 @@ import java.lang.Thread;
 
 public class Game extends JPanel implements Runnable {
   
+  public static Player player;
+
   public Game() {
+
+    player = new Player();
     
   }
   
@@ -25,6 +29,8 @@ public class Game extends JPanel implements Runnable {
     	}
     	
     }
+
+    player.draw(g);
   
   }
 
