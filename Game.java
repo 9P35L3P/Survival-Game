@@ -1,21 +1,46 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.lang.Thread;
+import java.util.ArrayList;
 
 public class Game extends JPanel implements Runnable {
 
   public static Player player;
+
+  public static ArrayList<Enemy> enemies;
   public static Enemy enemy;
 
   public Game() {
+  
+    setFocusable(true);
 
     player = new Player();
+
+    enemies = new ArrayList<Enemy>();
     enemy = new Enemy();
+    enemies.add(enemy);
+
+    addKeyListener(new KeyListen());
 
   }
 
   @Override
-  public void run() {}
+  public void run() {
+
+    while (true) {
+
+      try {
+
+        Thread.sleep(1000/30);
+
+      } catch (Exception e) {}
+
+      repaint();
+
+    }
+
+  }
 
   @Override
   public void paint(Graphics g) {
@@ -43,6 +68,48 @@ public class Game extends JPanel implements Runnable {
         g.drawRect(i * 32, w * 32, 32, 32);
 
       }
+
+    }
+
+  }
+
+  public static void moveEnemy() {
+
+    for (int i = 0; i < enemies.size(); i++) {
+
+      enemies.get(i).move(player);
+
+    }
+
+  }
+
+}
+
+class KeyListen extends KeyAdapter {
+
+  @Override
+  public void keyPressed(KeyEvent e) {
+
+    int keycode = e.getKeyCode();
+
+    switch (keycode) {
+
+      case 'W':
+        Game.player.y--;
+        Game.moveEnemy();
+        break;
+      case 'A':
+        Game.player.x--;
+        Game.moveEnemy();
+        break;
+      case 'S':
+        Game.player.y++;
+        Game.moveEnemy();
+        break;
+      case 'D':
+        Game.player.x++;
+        Game.moveEnemy();
+        break;
 
     }
 

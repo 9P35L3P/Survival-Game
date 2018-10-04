@@ -19,4 +19,36 @@ public class Enemy {
 
   }
 
+  public void move(Player player) {
+
+    int rand = (int) (Math.random() * 2);
+
+    if (rand == 0) {
+
+      if (x > player.x) {
+
+        x--;
+    
+      } else if (x < player.x) {
+
+        x++;
+
+      } 
+
+    } else {
+
+      if (y > player.y) {
+
+        y--;
+    
+      } else if (y < player.y) {
+
+        y++;
+
+      }
+
+    }
+
+  }
+
 }
