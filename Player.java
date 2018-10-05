@@ -12,11 +12,4 @@ public class Player {
 
   }
 
-  public void draw(Graphics g) {
-
-    g.setColor(Color.BLUE);
-    g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
-
-  }
-
 }

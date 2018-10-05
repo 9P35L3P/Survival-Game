@@ -1,15 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.lang.Thread;
+import java.lang.*;
 import java.util.ArrayList;
 
 public class Game extends JPanel implements Runnable {
 
   public static Player player;
-
   public static ArrayList<Enemy> enemies;
-  public static Enemy enemy;
+
+  public static int board[][] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
   public Game() {
   
@@ -18,8 +18,7 @@ public class Game extends JPanel implements Runnable {
     player = new Player();
 
     enemies = new ArrayList<Enemy>();
-    enemy = new Enemy();
-    enemies.add(enemy);
+    enemies.add(new Enemy());
 
     addKeyListener(new KeyListen());
 
@@ -36,6 +35,7 @@ public class Game extends JPanel implements Runnable {
 
       } catch (Exception e) {}
 
+      update();
       repaint();
 
     }
@@ -49,8 +49,26 @@ public class Game extends JPanel implements Runnable {
     g.fillRect(0, 0, 768, 768);
 
     drawGrid(g);
-    player.draw(g);
-    enemy.draw(g);
+
+    for (int y = 0; y < board.length; y++) {
+
+      for (int x = 0; x < board[0].length; x++) {
+
+        switch (board[y][x]) {
+
+        case 1:
+          g.setColor(Color.BLUE);
+          g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
+          break;
+        case 2:
+          g.setColor(Color.RED);
+          g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
+          break;
+        }
+
+      }
+
+    }
 
     g.setColor(new Color(110, 50, 0));
     g.fillRect(0, 640, 768, 768);
@@ -73,10 +91,23 @@ public class Game extends JPanel implements Runnable {
 
   }
 
+  public static void update() {
+    
+    board[player.y][player.x] = 1;
+
+    for (int i = 0; i < enemies.size(); i++) {
+      
+      board[enemies.get(i).y][enemies.get(i).x] = 2;
+ 
+    }
+
+  }
+
   public static void moveEnemy() {
 
     for (int i = 0; i < enemies.size(); i++) {
-
+     
+      board[enemies.get(i).y][enemies.get(i).x] = 0; 
       enemies.get(i).move(player);
 
     }
@@ -95,18 +126,22 @@ class KeyListen extends KeyAdapter {
     switch (keycode) {
 
       case 'W':
+        Game.board[Game.player.y][Game.player.x] = 0;
         Game.player.y--;
         Game.moveEnemy();
         break;
       case 'A':
+        Game.board[Game.player.y][Game.player.x] = 0;
         Game.player.x--;
         Game.moveEnemy();
         break;
       case 'S':
+        Game.board[Game.player.y][Game.player.x] = 0;
         Game.player.y++;
         Game.moveEnemy();
         break;
       case 'D':
+        Game.board[Game.player.y][Game.player.x] = 0;
         Game.player.x++;
         Game.moveEnemy();
         break;

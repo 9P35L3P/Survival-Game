@@ -12,13 +12,6 @@ public class Enemy {
 
   }
 
-  public void draw(Graphics g) {
-
-    g.setColor(Color.RED);
-    g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
-
-  }
-
   public void move(Player player) {
 
     int rand = (int) (Math.random() * 2);
