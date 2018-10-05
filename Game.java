@@ -127,24 +127,36 @@ class KeyListen extends KeyAdapter {
     switch (keycode) {
 
       case 'W':
-        Game.board[Game.player.y][Game.player.x] = 0;
-        Game.player.y--;
-        Game.moveEnemy();
+      	if (Game.player.y != 0) {
+      	
+	        Game.board[Game.player.y][Game.player.x] = 0;
+	        Game.player.y--;
+	        Game.moveEnemy();
+	        
+      	}
         break;
       case 'A':
-        Game.board[Game.player.y][Game.player.x] = 0;
-        Game.player.x--;
-        Game.moveEnemy();
+      	if (Game.player.x != 0) {
+      		
+	        Game.board[Game.player.y][Game.player.x] = 0;
+	        Game.player.x--;
+	        Game.moveEnemy();
+      	}
         break;
       case 'S':
-        Game.board[Game.player.y][Game.player.x] = 0;
-        Game.player.y++;
-        Game.moveEnemy();
+      	if (Game.player.y != 19) {
+	      
+	        Game.board[Game.player.y][Game.player.x] = 0;
+	        Game.player.y++;
+	        Game.moveEnemy();
+      	}
         break;
       case 'D':
-        Game.board[Game.player.y][Game.player.x] = 0;
-        Game.player.x++;
-        Game.moveEnemy();
+      	if (Game.player.x != 23) {
+	        Game.board[Game.player.y][Game.player.x] = 0;
+	        Game.player.x++;
+	        Game.moveEnemy();
+      	}
         break;
 
     }
