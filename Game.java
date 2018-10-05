@@ -56,14 +56,15 @@ public class Game extends JPanel implements Runnable {
 
         switch (board[y][x]) {
 
-        case 1:
-          g.setColor(Color.BLUE);
-          g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
-          break;
-        case 2:
-          g.setColor(Color.RED);
-          g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
-          break;
+          case 1:
+            g.setColor(Color.BLUE);
+            g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
+            break;
+          case 2:
+            g.setColor(Color.RED);
+            g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
+            break;
+            
         }
 
       }
