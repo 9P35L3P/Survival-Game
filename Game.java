@@ -117,6 +117,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 
   }
 	
+  @Override
   public void keyPressed(KeyEvent e) {
  
     int keycode = e.getKeyCode();
