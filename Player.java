@@ -21,7 +21,6 @@ public class Player {
   	
 		    Game.board[y][x] = 0;
 		    y--;
-		    Game.moveEnemy();
 		
 		  }
 		  break;
@@ -31,7 +30,6 @@ public class Player {
       		
 		    Game.board[y][x] = 0;
 		    x--;
-		    Game.moveEnemy();
       	
 		  }
 		  break;
@@ -41,7 +39,6 @@ public class Player {
 		      
 		    Game.board[y][x] = 0;
 		    y++;
-		    Game.moveEnemy();
       	
 		  }
 		  break;
@@ -50,8 +47,7 @@ public class Player {
 	  	if (Game.board[y][x + 1] == 0) {
       		
 		    Game.board[y][x] = 0;
-	  	  x++;
-		    Game.moveEnemy();
+	  	    x++;
       	
 		  }
 		  break;
