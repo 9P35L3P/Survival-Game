@@ -35,7 +35,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 
       } catch (Exception e) {}
 
-      update();
+      updateBoard();    
       repaint();
 
     }
@@ -98,7 +98,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 
   }
 
-  public static void update() {
+  public static void updateBoard() {
     
     board[player.y][player.x] = 2;
 
@@ -113,8 +113,8 @@ public class Game extends JPanel implements Runnable, KeyListener {
   public static void moveEnemy() {
 
     for (int i = 0; i < enemies.size(); i++) {
-     
-      board[enemies.get(i).y][enemies.get(i).x] = 0; 
+      
+      board[enemies.get(i).y][enemies.get(i).x] = 0;
       enemies.get(i).move(player);
 
     }
@@ -130,15 +130,23 @@ public class Game extends JPanel implements Runnable, KeyListener {
 
       case 'W':
       	player.move("W");
+      	updateBoard();
+      	moveEnemy();
         break;
       case 'A':
       	player.move("A");
+      	updateBoard();
+      	moveEnemy();
         break;
       case 'S':
       	player.move("S");
+      	updateBoard();
+      	moveEnemy();
         break;
       case 'D':
       	player.move("D");
+      	updateBoard();
+      	moveEnemy();
         break;
 
     }
