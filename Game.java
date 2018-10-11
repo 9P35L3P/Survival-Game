@@ -45,18 +45,20 @@ public class Game extends JPanel implements Runnable, KeyListener {
   @Override
   public void paint(Graphics g) {
 
-    drawGrid(g);
-
     for (int y = 0; y < board.length; y++) {
 
       for (int x = 0; x < board[0].length; x++) {
 
         switch (board[y][x]) {
-
-	  case 1:
-	    g.setColor(Color.DARK_GRAY);
+	  case 0:
+	    g.setColor(Color.WHITE);
             g.fillRect(x * 32, y * 32, 32, 32);
             break;
+			
+	  case 1:
+	     g.setColor(Color.DARK_GRAY);
+             g.fillRect(x * 32, y * 32, 32, 32);
+             break;
 			
           case 2:
             g.setColor(Color.BLUE);
@@ -72,6 +74,8 @@ public class Game extends JPanel implements Runnable, KeyListener {
       }
 
     }
+    
+    drawGrid(g);
 
     g.setColor(new Color(110, 50, 0));
     g.fillRect(0, 640, 768, 768);
@@ -125,43 +129,26 @@ public class Game extends JPanel implements Runnable, KeyListener {
     switch (keycode) {
 
       case 'W':
-      	if (board[player.y - 1][player.x] == 0) {
-      	
-	  board[player.y][player.x] = 0;
-	  player.y--;
-	  moveEnemy();
-	        
-      	}
+      	player.move("W");
         break;
       case 'A':
-      	if (board[player.y][player.x - 1] == 0) {
-      		
-	  board[player.y][player.x] = 0;
-	  player.x--;
-	  moveEnemy();
-      	
-	}
+      	player.move("A");
         break;
       case 'S':
-      	if (board[player.y + 1][player.x] == 0) {
-	      
-	  board[player.y][player.x] = 0;
-	  player.y++;
-	  moveEnemy();
-      	
-	}
+      	player.move("S");
         break;
       case 'D':
-      	if (board[player.y][player.x + 1] == 0) {
-	  board[player.y][player.x] = 0;
-  	  player.x++;
-	  moveEnemy();
-      	
-	}
+      	player.move("D");
         break;
 
     }
   
   }
+  
+  @Override
+  public void keyReleased(KeyEvent e) {}
+  
+  @Override
+  public void keyTyped(KeyEvent e) {}
 
 }
