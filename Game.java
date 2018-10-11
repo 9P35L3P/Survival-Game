@@ -4,12 +4,12 @@ import java.awt.event.*;
 import java.lang.*;
 import java.util.ArrayList;
 
-public class Game extends JPanel implements Runnable {
+public class Game extends JPanel implements Runnable, KeyListener {
 
   public static Player player;
   public static ArrayList<Enemy> enemies;
 
-  public static int board[][] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+  public static int board[][] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
   public Game() {
   
@@ -20,7 +20,7 @@ public class Game extends JPanel implements Runnable {
     enemies = new ArrayList<Enemy>();
     enemies.add(new Enemy());
 
-    addKeyListener(new KeyListen());
+    addKeyListener(this);
 
   }
 
@@ -45,9 +45,6 @@ public class Game extends JPanel implements Runnable {
   @Override
   public void paint(Graphics g) {
 
-    g.setColor(Color.DARK_GRAY);
-    g.fillRect(0, 0, 768, 768);
-
     drawGrid(g);
 
     for (int y = 0; y < board.length; y++) {
@@ -56,11 +53,16 @@ public class Game extends JPanel implements Runnable {
 
         switch (board[y][x]) {
 
-          case 1:
+	  case 1:
+	    g.setColor(Color.DARK_GRAY);
+            g.fillRect(x * 32, y * 32, 32, 32);
+            break;
+			
+          case 2:
             g.setColor(Color.BLUE);
             g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
             break;
-          case 2:
+          case 3:
             g.setColor(Color.RED);
             g.fillRect(x * 32 + 1, y * 32 + 1, 31, 31);
             break;
@@ -94,11 +96,11 @@ public class Game extends JPanel implements Runnable {
 
   public static void update() {
     
-    board[player.y][player.x] = 1;
+    board[player.y][player.x] = 2;
 
     for (int i = 0; i < enemies.size(); i++) {
       
-      board[enemies.get(i).y][enemies.get(i).x] = 2;
+      board[enemies.get(i).y][enemies.get(i).x] = 3;
  
     }
 
@@ -114,56 +116,51 @@ public class Game extends JPanel implements Runnable {
     }
 
   }
-
-}
-
-class KeyListen extends KeyAdapter {
-
-  @Override
+	
   public void keyPressed(KeyEvent e) {
-
+ 
     int keycode = e.getKeyCode();
 
     switch (keycode) {
 
       case 'W':
-      	if (Game.player.y != 0) {
+      	if (board[player.y - 1][player.x] == 0) {
       	
-	  Game.board[Game.player.y][Game.player.x] = 0;
-	  Game.player.y--;
-	  Game.moveEnemy();
+	  board[player.y][player.x] = 0;
+	  player.y--;
+	  moveEnemy();
 	        
       	}
         break;
       case 'A':
-      	if (Game.player.x != 0) {
+      	if (board[player.y][player.x - 1] == 0) {
       		
-	  Game.board[Game.player.y][Game.player.x] = 0;
-	  Game.player.x--;
-	  Game.moveEnemy();
+	  board[player.y][player.x] = 0;
+	  player.x--;
+	  moveEnemy();
       	
 	}
         break;
       case 'S':
-      	if (Game.player.y != 19) {
+      	if (board[player.y + 1][player.x] == 0) {
 	      
-	  Game.board[Game.player.y][Game.player.x] = 0;
-	  Game.player.y++;
-	  Game.moveEnemy();
+	  board[player.y][player.x] = 0;
+	  player.y++;
+	  moveEnemy();
       	
 	}
         break;
       case 'D':
-      	if (Game.player.x != 23) {
-	  Game.board[Game.player.y][Game.player.x] = 0;
-  	  Game.player.x++;
-	  Game.moveEnemy();
+      	if (board[player.y][player.x + 1] == 0) {
+	  board[player.y][player.x] = 0;
+  	  player.x++;
+	  moveEnemy();
       	
 	}
         break;
 
     }
-
+  
   }
 
 }
