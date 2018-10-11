@@ -129,34 +129,37 @@ class KeyListen extends KeyAdapter {
       case 'W':
       	if (Game.player.y != 0) {
       	
-	        Game.board[Game.player.y][Game.player.x] = 0;
-	        Game.player.y--;
-	        Game.moveEnemy();
+	  Game.board[Game.player.y][Game.player.x] = 0;
+	  Game.player.y--;
+	  Game.moveEnemy();
 	        
       	}
         break;
       case 'A':
       	if (Game.player.x != 0) {
       		
-	        Game.board[Game.player.y][Game.player.x] = 0;
-	        Game.player.x--;
-	        Game.moveEnemy();
-      	}
+	  Game.board[Game.player.y][Game.player.x] = 0;
+	  Game.player.x--;
+	  Game.moveEnemy();
+      	
+	}
         break;
       case 'S':
       	if (Game.player.y != 19) {
 	      
-	        Game.board[Game.player.y][Game.player.x] = 0;
-	        Game.player.y++;
-	        Game.moveEnemy();
-      	}
+	  Game.board[Game.player.y][Game.player.x] = 0;
+	  Game.player.y++;
+	  Game.moveEnemy();
+      	
+	}
         break;
       case 'D':
       	if (Game.player.x != 23) {
-	        Game.board[Game.player.y][Game.player.x] = 0;
-	        Game.player.x++;
-	        Game.moveEnemy();
-      	}
+	  Game.board[Game.player.y][Game.player.x] = 0;
+  	  Game.player.x++;
+	  Game.moveEnemy();
+      	
+	}
         break;
 
     }
