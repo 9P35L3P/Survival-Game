@@ -18,11 +18,11 @@ public class Enemy {
 
     if (rand == 0) {
 
-      if (x > player.x && Game.board[player.y][player.x - 1] == 0) {
+      if (x > player.x && Game.board[y][x - 1] == 0) {
 
         x--;
     
-      } else if (x < player.x && Game.board[player.y][player.x + 1] == 0) {
+      } else if (x < player.x && Game.board[y][x + 1] == 0) {
 
         x++;
 
@@ -30,11 +30,11 @@ public class Enemy {
 
     } else {
 
-      if (y > player.y && Game.board[player.y - 1][player.x] == 0) {
+      if (y > player.y && Game.board[y - 1][x] == 0) {
 
         y--;
     
-      } else if (y < player.y && Game.board[player.y + 1][player.x] == 0) {
+      } else if (y < player.y && Game.board[y + 1][x] == 0) {
 
         y++;
 
