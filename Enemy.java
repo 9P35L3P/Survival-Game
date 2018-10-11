@@ -7,8 +7,8 @@ public class Enemy {
 
   public Enemy() {
 
-    x = (int) (Math.random() * 24);
-    y = (int) (Math.random() * 20);
+    x = (int) (Math.random() * 22 + 1);
+    y = (int) (Math.random() * 18 + 1);
 
   }
 
@@ -18,11 +18,11 @@ public class Enemy {
 
     if (rand == 0) {
 
-      if (x > player.x) {
+      if (x > player.x && Game.board[player.y][player.x - 1] == 0) {
 
         x--;
     
-      } else if (x < player.x) {
+      } else if (x < player.x && Game.board[player.y][player.x + 1] == 0) {
 
         x++;
 
@@ -30,11 +30,11 @@ public class Enemy {
 
     } else {
 
-      if (y > player.y) {
+      if (y > player.y && Game.board[player.y - 1][player.x] == 0) {
 
         y--;
     
-      } else if (y < player.y) {
+      } else if (y < player.y && Game.board[player.y + 1][player.x] == 0) {
 
         y++;
 
